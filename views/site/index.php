@@ -13,43 +13,56 @@ $this->title = 'My Yii Application';
 
   <!-- BEGIN SIDEBAR LISTS -->
   <div class="container">
-    <!-- CONTACTS -->
-    <section class="col sidebar-section contacts">
-      <h2 class="section-title sidebar-title">Contacts</h2>
-      <ul class="list list--clearfix sidebar-list contacts-list">
-        <?php foreach($contacts as $contact):?>
-          <li class="list-item">
-            <span class="list-marker"><?=$contact->marker?>:</span>
-            <a href="<?=$contact->pre_link?>:<?=$contact->link?>" class="link list-link"><?=$contact->text?></a>
-          </li>
-        <?php endforeach;?>
-      </ul>
-    </section>
 
-    <!-- TECH SKILLS -->
-    <section class="col sidebar-section">
-      <h2 class="section-title sidebar-title">Tech Skills</h2>
-      <ul class="list list--marked sidebar-list sidebar-list--marked">
-        <li class="list-item">HTML5</li>
-        <li class="list-item">CSS3</li>
-        <li class="list-item">GIT</li>
-        <li class="list-item">WebPack</li>
-        <li class="list-item">JavaScript</li>
-        <li class="list-item">React.js</li>
-        <li class="list-item">Node.js</li>
-      </ul>
-    </section>
+    <?php if (!empty($contacts)) : ?>
+      <!-- CONTACTS -->
+      <section class="col sidebar-section contacts">
+        <h2 class="section-title sidebar-title">Contacts</h2>
+        <ul class="list list--clearfix sidebar-list contacts-list">
+          <?php
+          foreach ($contacts as $contact) :
+            // for ($i = 0; $i < count($contacts); $i++) {
+            //   $contact = $contacts[$i];
+          ?>
+            <li class="list-item">
+              <span class="list-marker"><?= $contact->marker ?>:</span>
+              <a href="<?= $contact->pre_link ?>:<?= $contact->link ?>" class="link list-link"><?= $contact->text ?></a>
+            </li>
+          <?php
+          // }
+          endforeach;
+          ?>
+        </ul>
+      </section>
+    <?php endif; ?>
 
-    <!-- SOFT SKILLS -->
-    <section class="col sidebar-section">
-      <h2 class="section-title sidebar-title">Soft Skills</h2>
-      <ul class="list list--marked sidebar-list sidebar-list--marked">
-        <li class="list-item">Scrum</li>
-        <li class="list-item">Agile</li>
-        <li class="list-item">GTD</li>
-        <li class="list-item">Teamwork</li>
-      </ul>
-    </section>
+    <?php if (!empty($categories)) : ?>
+      <!-- TECH SKILLS -->
+      <section class="col sidebar-section">
+        <h2 class="section-title sidebar-title">Tech Skills</h2>
+        <ul class="list list--marked sidebar-list sidebar-list--marked">
+          <li class="list-item">HTML5</li>
+          <li class="list-item">CSS3</li>
+          <li class="list-item">GIT</li>
+          <li class="list-item">WebPack</li>
+          <li class="list-item">JavaScript</li>
+          <li class="list-item">React.js</li>
+          <li class="list-item">Node.js</li>
+        </ul>
+      </section>
+
+      <!-- SOFT SKILLS -->
+      <section class="col sidebar-section">
+        <h2 class="section-title sidebar-title">Soft Skills</h2>
+        <ul class="list list--marked sidebar-list sidebar-list--marked">
+          <li class="list-item">Scrum</li>
+          <li class="list-item">Agile</li>
+          <li class="list-item">GTD</li>
+          <li class="list-item">Teamwork</li>
+        </ul>
+      </section>
+    <?php endif; ?>
+
   </div>
   <!-- END SIDEBAR LISTS -->
 </aside>
