@@ -19,19 +19,12 @@ $this->title = 'My Yii Application';
       <section class="col sidebar-section contacts">
         <h2 class="section-title sidebar-title">Contacts</h2>
         <ul class="list list--clearfix sidebar-list contacts-list">
-          <?php
-          foreach ($contacts as $contact) :
-            // for ($i = 0; $i < count($contacts); $i++) {
-            //   $contact = $contacts[$i];
-          ?>
+          <?php foreach ($contacts as $contact) : ?>
             <li class="list-item">
               <span class="list-marker"><?= $contact->marker ?>:</span>
-              <a href="<?= $contact->pre_link ?>:<?= $contact->link ?>" class="link list-link"><?= $contact->text ?></a>
+              <a href="<?= $contact->link ?>" class="link list-link"><?= $contact->value ?></a>
             </li>
-          <?php
-          // }
-          endforeach;
-          ?>
+          <?php endforeach; ?>
         </ul>
       </section>
     <?php endif; ?>
@@ -71,12 +64,10 @@ $this->title = 'My Yii Application';
 <!-- BEGIN MAIN -->
 <main class="section main">
   <div class="container">
-    <h4 class="section-title section-title--small">Front-End Developer</h4>
-    <h1 class="section-title section-title--large">Anton Chornyi</h1>
+    <h4 class="section-title section-title--small"><?= $profile->profession; ?></h4>
+    <h1 class="section-title section-title--large"><?= $profile->name; ?></h1>
     <p class="section-desc main-desc">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt
-      ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus commodo
-      viverra maecenas accumsan lacus vel facilisis.
+      <?= $profile->description; ?>
     </p>
 
     <!-- BEGIN PORTFOLIO -->
@@ -120,95 +111,65 @@ $this->title = 'My Yii Application';
     </section>
     <!-- END PORTFOLIO -->
 
-    <!-- BEGIN EXPERIENCE -->
-    <section class="col experience">
-      <h2 class="section-title experience-title">Work Experience</h2>
+    <?php if (!empty($jobs)) : ?>
+      <!-- BEGIN EXPERIENCE -->
+      <section class="col experience">
+        <h2 class="section-title experience-title">Work Experience</h2>
 
-      <!-- BEGIN FIRST JOB -->
-      <article class="experience-block">
-        <h3 class="section-title section-title--sub main-section_title">
-          <span class="section-title_dark">Front-End Developer</span>
-          Freelance
-        </h3>
-        <div class="status">
-          <span class="status-date">September 2019 - up to now</span>
-          <span class="status-separator"></span>
-          <span class="status-place">Ukraine</span>
-        </div>
-        <ul class="list list--marked experience-list">
-          <li class="list-item section-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </li>
-          <li class="list-item section-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </li>
-          <li class="list-item section-desc">Risus commodo viverra maecenas.</li>
-          <li class="list-item section-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-          </li>
-        </ul>
-      </article>
-      <!-- END FIRST JOB -->
+        <?php foreach ($jobs as $number => $job) : ?>
+          <!-- BEGIN <?= $number; ?> JOB -->
+          <article class="experience-block">
+            <h3 class="section-title section-title--sub main-section_title">
+              <span class="section-title_dark"><?= $job->profession; ?></span>
+              <?= $job->company; ?>
+            </h3>
+            <div class="status">
+              <span class="status-date"><?= $job->employment_date; ?> - <?= $job->dismissal_date; ?></span>
+              <span class="status-separator"></span>
+              <span class="status-place"><?= $job->country; ?></span>
+            </div>
 
-      <!-- BEGIN SECOND JOB -->
-      <article class="experience-block">
-        <h3 class="section-title section-title--sub main-section_title">
-          <span class="section-title_dark">Manager</span>
-          Roga &amp; Kopyta New
-        </h3>
-        <div class="status">
-          <span class="status-date">March 2015 - October 2018</span>
-          <span class="status-separator"></span>
-          <span class="status-place">Ukraine</span>
-        </div>
-        <ul class="list list--marked experience-list">
-          <li class="list-item section-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et
-            dolore magna aliqua.
-          </li>
-          <li class="list-item section-desc">Quis ipsum suspendisse ultrices gravida.</li>
-          <li class="list-item section-desc">Risus commodo viverra maecenas.</li>
-        </ul>
-      </article>
-      <!-- END SECOND JOB -->
+            <?php if (!empty($descriptions)) : ?>
+              <ul class="list list--marked experience-list">
+                <?php foreach ($descriptions as $desc) : ?>
+                  <li class="list-item section-desc">
+                    <?= $desc->text; ?>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
 
-      <!-- BEGIN THIRD JOB -->
-      <article class="experience-block">
-        <h3 class="section-title section-title--sub main-section_title">
-          <span class="section-title_dark">Manager</span>
-          Roga &amp; Kopyta LLC
-        </h3>
-        <div class="status">
-          <span class="status-date">June 2014 - February 2015</span>
-          <span class="status-separator"></span>
-          <span class="status-place">Ukraine</span>
-        </div>
-        <ul class="list list--marked experience-list">
-          <li class="list-item section-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </li>
-          <li class="list-item section-desc">Quis ipsum suspendisse ultrices gravida.</li>
-          <li class="list-item section-desc">Risus commodo viverra maecenas.</li>
-        </ul>
-      </article>
-      <!-- END THIRD JOB -->
-    </section>
-    <!-- END EXPERIENCE -->
+          </article>
+          <!-- END <?= $number; ?> JOB -->
+        <?php endforeach; ?>
 
-    <!-- EDUCATION -->
-    <section class="col education">
-      <h2 class="section-title education-title">Education</h2>
-      <h3 class="section-title section-title--sub main-section_title">
-        Kharkiv National University of Radioelectronics
-      </h3>
-      <h4 class="section-title section-title--small education-small_title">Management</h4>
-      <div class="status">
-        <span class="status-date">Septermber 2009 - June 2014</span>
-        <span class="status-separator"></span>
-        <span class="status-place">Ukraine</span>
-      </div>
-    </section>
+      </section>
+      <!-- END EXPERIENCE -->
+    <?php endif; ?>
+
+    <?php if (!empty($educations)) : ?>
+      <!-- BEGIN EDUCATION -->
+      <section class="col education">
+        <h2 class="section-title education-title">Education</h2>
+
+        <?php foreach ($educations as $number => $education) : ?>
+          <!-- BEGIN <?= $number; ?> EDUCATION -->
+          <h3 class="section-title section-title--sub main-section_title">
+            <?= $education->university; ?>
+          </h3>
+          <h4 class="section-title section-title--small education-small_title"><?= $education->university; ?></h4>
+          <div class="status">
+            <span class="status-date"><?= $education->admission_date; ?> - <?= $education->graduation_date; ?></span>
+            <span class="status-separator"></span>
+            <span class="status-place"><?= $education->country; ?></span>
+          </div>
+          <!-- END <?= $number; ?> EDUCATION -->
+        <?php endforeach; ?>
+
+      </section>
+      <!-- END EDUCATION -->
+    <?php endif; ?>
+
   </div>
 </main>
 <!-- END MAIN -->

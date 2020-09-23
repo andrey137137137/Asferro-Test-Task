@@ -6,15 +6,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Experiences';
+$this->title = 'Descriptions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="experience-index">
+<div class="description-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Experience', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Description', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -24,15 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'profession',
-            'company',
-            'description_1',
-            'description_2',
-            //'description_3',
-            //'description_4',
-            //'employment_date',
-            //'dismissal_date',
-            //'country',
+            'job_id',
+            'text',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

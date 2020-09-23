@@ -8,10 +8,9 @@ use Yii;
  * This is the model class for table "contacts".
  *
  * @property int $id
- * @property string $name
  * @property string $value
- * @property string $pre_link
- * @property string $item_prefix
+ * @property string $link
+ * @property string $marker
  */
 class Contact extends \yii\db\ActiveRecord
 {
@@ -29,11 +28,10 @@ class Contact extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'value', 'pre_link', 'item_prefix'], 'required'],
-            [['name'], 'string', 'max' => 30],
-            [['value'], 'string', 'max' => 50],
-            [['pre_link'], 'string', 'max' => 20],
-            [['item_prefix'], 'string', 'max' => 3],
+            [['value', 'link', 'marker'], 'required'],
+            [['value'], 'string', 'max' => 30],
+            [['link'], 'string', 'max' => 50],
+            [['marker'], 'string', 'max' => 3],
         ];
     }
 
@@ -44,10 +42,9 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
             'value' => 'Value',
-            'pre_link' => 'Pre Link',
-            'item_prefix' => 'Item Prefix',
+            'link' => 'Link',
+            'marker' => 'Marker',
         ];
     }
 }

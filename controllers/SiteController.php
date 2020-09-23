@@ -12,7 +12,7 @@ use app\models\Profile;
 use app\models\Contact;
 use app\models\Category;
 use app\models\Education;
-use app\models\Experience;
+use app\models\Job;
 
 class SiteController extends Controller
 {
@@ -74,7 +74,7 @@ class SiteController extends Controller
     $categories = Category::find()
       ->orderBy('id')
       ->all();
-    $experience = Experience::find()
+    $jobs = Job::find()
       ->orderBy('id')
       ->all();
     $educations = Education::find()
@@ -85,7 +85,7 @@ class SiteController extends Controller
       'profile' => $profile,
       'contacts' => $contacts,
       'categories' => $categories,
-      'experience' => $experience,
+      'jobs' => $jobs,
       'educations' => $educations,
     ]);
   }
@@ -122,33 +122,5 @@ class SiteController extends Controller
     Yii::$app->user->logout();
 
     return $this->goHome();
-  }
-
-  /**
-   * Displays contact page.
-   *
-   * @return Response|string
-   */
-  public function actionContact()
-  {
-    $model = new ContactForm();
-    if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-      Yii::$app->session->setFlash('contactFormSubmitted');
-
-      return $this->refresh();
-    }
-    return $this->render('contact', [
-      'model' => $model,
-    ]);
-  }
-
-  /**
-   * Displays about page.
-   *
-   * @return string
-   */
-  public function actionAbout()
-  {
-    return $this->render('about');
   }
 }
