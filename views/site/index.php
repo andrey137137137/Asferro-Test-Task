@@ -17,14 +17,12 @@ $this->title = 'My Yii Application';
     <section class="col sidebar-section contacts">
       <h2 class="section-title sidebar-title">Contacts</h2>
       <ul class="list list--clearfix sidebar-list contacts-list">
-        <li class="list-item">
-          <span class="list-marker">c:</span>
-          <a href="tel:380951138598" class="link list-link">+38 095 113 85 98</a>
-        </li>
-        <li class="list-item">
-          <span class="list-marker">e:</span>
-          <a href="mailto:chornyiav@gmail.com" class="link list-link">chornyiav@gmail.com</a>
-        </li>
+        <?php foreach($contacts as $contact):?>
+          <li class="list-item">
+            <span class="list-marker"><?=$contact->marker?>:</span>
+            <a href="<?=$contact->pre_link?>:<?=$contact->link?>" class="link list-link"><?=$contact->text?></a>
+          </li>
+        <?php endforeach;?>
       </ul>
     </section>
 
