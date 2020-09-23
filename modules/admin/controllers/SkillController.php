@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\SkillList;
+use app\models\Skill;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SkillListController implements the CRUD actions for SkillList model.
+ * SkillController implements the CRUD actions for Skill model.
  */
-class SkillListController extends Controller
+class SkillController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,13 +30,13 @@ class SkillListController extends Controller
     }
 
     /**
-     * Lists all SkillList models.
+     * Lists all Skill models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => SkillList::find(),
+            'query' => Skill::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class SkillListController extends Controller
     }
 
     /**
-     * Displays a single SkillList model.
+     * Displays a single Skill model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class SkillListController extends Controller
     }
 
     /**
-     * Creates a new SkillList model.
+     * Creates a new Skill model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new SkillList();
+        $model = new Skill();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class SkillListController extends Controller
     }
 
     /**
-     * Updates an existing SkillList model.
+     * Updates an existing Skill model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class SkillListController extends Controller
     }
 
     /**
-     * Deletes an existing SkillList model.
+     * Deletes an existing Skill model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class SkillListController extends Controller
     }
 
     /**
-     * Finds the SkillList model based on its primary key value.
+     * Finds the Skill model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SkillList the loaded model
+     * @return Skill the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SkillList::findOne($id)) !== null) {
+        if (($model = Skill::findOne($id)) !== null) {
             return $model;
         }
 

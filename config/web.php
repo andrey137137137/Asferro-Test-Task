@@ -6,7 +6,9 @@ $db = require __DIR__ . '/db.php';
 $config = [
   'id' => 'basic',
   'basePath' => dirname(__DIR__),
+  'homeUrl' => '/',
   'bootstrap' => ['log'],
+  'defaultRoute' => 'site/index',
   'aliases' => [
     '@bower' => '@vendor/bower-asset',
     '@npm'   => '@vendor/npm-asset',
@@ -15,6 +17,7 @@ $config = [
     'request' => [
       // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
       'cookieValidationKey' => 'ZdrJFTvzZ8o-YOSEeJcyF1QbML0mObpK',
+      'baseUrl' => '',
     ],
     'cache' => [
       'class' => 'yii\caching\FileCache',
@@ -47,14 +50,20 @@ $config = [
     //   'dsn' => 'mongodb://portfolio_db:dfgERGHJGd452@ds233763.mlab.com:33763/portfolio_db',
     // ],
     'db' => $db,
-    /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+    'urlManager' => [
+      'enablePrettyUrl' => true,
+      'showScriptName' => false,
+      'rules' => [
+        '/' => 'site/index',
+        'login' => 'site/login',
+      ],
+    ],
+  ],
+  'modules' => [
+    'admin' => [
+      'class' => 'app\modules\admin\Module',
+      'layout' => 'main'
+    ],
   ],
   'params' => $params,
 ];
