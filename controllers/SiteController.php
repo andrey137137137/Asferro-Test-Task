@@ -8,7 +8,10 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Profile;
+use app\models\Contact;
+use app\models\Education;
+use app\models\Experience;
 
 class SiteController extends Controller
 {
@@ -61,7 +64,25 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $profile = Profile::find()
+          ->limit(1)
+          ->one();
+        $contacts = Contact::find()
+          ->orderBy('id')
+          ->all();
+        $experience = Experience::find()
+          ->orderBy('id')
+          ->all();
+        $educations = Education::find()
+          ->orderBy('id')
+          ->all();
+
+        return $this->render('index', [
+          'profile'->$profile,
+          'contacts'->$contacts,
+          'experience'->$experience,
+          'educations'->$educations,
+        ]);
     }
 
     /**
