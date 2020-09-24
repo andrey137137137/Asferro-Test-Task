@@ -45,10 +45,6 @@ $config = [
         ],
       ],
     ],
-    // 'mongodb' => [
-    //   'class' => '\yii\mongodb\Connection',
-    //   'dsn' => 'mongodb://portfolio_db:dfgERGHJGd452@ds233763.mlab.com:33763/portfolio_db',
-    // ],
     'db' => $db,
     'urlManager' => [
       'enablePrettyUrl' => true,
@@ -57,6 +53,12 @@ $config = [
         '/' => 'site/index',
         'login' => 'site/login',
       ],
+    ],
+    'formatter' => [
+      'dateFormat' => 'MM yyyy',
+      'decimalSeparator' => ',',
+      'thousandSeparator' => ' ',
+      'currencyCode' => 'EUR',
     ],
   ],
   'modules' => [
@@ -80,11 +82,6 @@ if (YII_ENV_DEV) {
   $config['bootstrap'][] = 'gii';
   $config['modules']['gii'] = [
     'class' => 'yii\gii\Module',
-    // 'generators' => [
-    //   'mongoDbModel' => [
-    //     'class' => 'yii\mongodb\gii\model\Generator'
-    //   ]
-    // ],
     // uncomment the following to add your IP if you are not connecting from localhost.
     //'allowedIPs' => ['127.0.0.1', '::1'],
   ];

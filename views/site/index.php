@@ -124,14 +124,14 @@ $this->title = 'My Yii Application';
               <?= $job->company; ?>
             </h3>
             <div class="status">
-              <span class="status-date"><?= $job->employment_date; ?> - <?= $job->dismissal_date; ?></span>
+              <span class="status-date"><?= $job->employmentDateStr; ?> - <?= $job->dismissalDateStr; ?></span>
               <span class="status-separator"></span>
               <span class="status-place"><?= $job->country; ?></span>
             </div>
 
-            <?php if (!empty($descriptions)) : ?>
+            <?php if (!empty($job->descriptions)) : ?>
               <ul class="list list--marked experience-list">
-                <?php foreach ($descriptions as $desc) : ?>
+                <?php foreach ($job->descriptions as $desc) : ?>
                   <li class="list-item section-desc">
                     <?= $desc->text; ?>
                   </li>
@@ -157,9 +157,9 @@ $this->title = 'My Yii Application';
           <h3 class="section-title section-title--sub main-section_title">
             <?= $education->university; ?>
           </h3>
-          <h4 class="section-title section-title--small education-small_title"><?= $education->university; ?></h4>
+          <h4 class="section-title section-title--small education-small_title"><?= $education->profession; ?></h4>
           <div class="status">
-            <span class="status-date"><?= $education->admission_date; ?> - <?= $education->graduation_date; ?></span>
+            <span class="status-date"><?= $education->admissionDateStr; ?> - <?= $education->graduationDateStr; ?></span>
             <span class="status-separator"></span>
             <span class="status-place"><?= $education->country; ?></span>
           </div>

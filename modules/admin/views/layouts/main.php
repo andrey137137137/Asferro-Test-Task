@@ -5,9 +5,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\widgets\Alert;
-use yii\helpers\Url;
 use app\assets\AppAsset;
 
 $urlRoot = '/admin';
@@ -34,15 +32,15 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
       'brandLabel' => 'Сайт',
-      // 'brandUrl' => Yii::$app->homeUrl,
       'brandUrl' => '/../../',
       'options' => [
-        'class' => 'navbar-inverse navbar-fixed-top',
+        'class' => 'navbar-inverse',
       ],
     ]);
     echo Nav::widget([
       'options' => ['class' => 'navbar-nav'],
       'items' => [
+        ['label' => 'Профили', 'url' => [$urlRoot . '/profile/index']],
         [
           'label' => 'Список навыков',
           'items' => [
@@ -50,6 +48,15 @@ AppAsset::register($this);
             ['label' => 'Навыки', 'url' => [$urlRoot . '/skill/index']],
           ],
         ],
+        [
+          'label' => 'Опыт работы',
+          'items' => [
+            ['label' => 'Компании', 'url' => [$urlRoot . '/job/index']],
+            ['label' => 'Опыт в компаниях', 'url' => [$urlRoot . '/description/index']],
+          ],
+        ],
+        ['label' => 'Образование', 'url' => [$urlRoot . '/education/index']],
+        ['label' => 'Контакты', 'url' => [$urlRoot . '/contact/index']],
       ],
     ]);
     echo Nav::widget([
@@ -63,10 +70,6 @@ AppAsset::register($this);
   </header>
 
   <div class="container">
-    <?= Breadcrumbs::widget([
-      // 'homeLink' => ['label' => 'Главная', 'link' => '/admin'],
-      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]) ?>
     <?= Alert::widget() ?>
     <?= $content ?>
   </div>
